@@ -1,0 +1,214 @@
+<html>
+
+<head>
+    <title>Seller Profile</title>
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-storage.js"></script>
+    <script src="sellerProfile.js" defer></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="sellerProfile.css">
+</head>
+
+
+<body>
+    <section id="header">
+        <div class="header container">
+
+            <div class="nav-bar">
+                <div class="logoImg">
+
+                    <img src="images_audrey/lg.png" id="Logo" alt="logo">
+
+                </div>
+
+                <div class="nav-list">
+                    <div class="hamburger">
+                        <div class="bar"></div>
+                    </div>
+                    <ul>
+                        <li><a href="#Profile" data-after="Profile" onclick="showDetails()">Profile</a></li>
+                        <li><a href="#showProducts" data-after="Products">Products</a></li>
+                        <li><a href="setupProduct.html" data-after="Add Product">Add Product</a></li>
+                        <li><a href="#ViewRC" data-after="Rating and Comments">Rating and Comment</a></li>
+                        <li><a href="order.html" data-after="Contact">Orders</a></li>
+                        <li><a href="#" data-after="Logout" onclick="logOut()">Logout</a></li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Header -->
+
+
+    <!-- Hero Section  -->
+    <section id="hero">
+        <div class="hero container">
+            <div>
+                <h1>Welcome to Virtual-Pasar<span></span></h1>
+                <h2>From Raw to Cook <span></span></h2>
+                <h2>All in One <span></span></h2>
+            </div>
+        </div>
+    </section>
+    <!-- End of Hero Section  -->
+
+    <div id="container">
+
+
+        <br><br>
+        <hr class="dashed">
+        <h1>User Profile</h1>
+        <hr class="dashed">
+        <br><br>
+        <div id="Profile">
+            <h2>Hello, <strong id="sellerName"></strong> !</h2><br>
+            <h3>Stall Info</h3><br>
+            <p>
+                Stall Name: <br><strong id="stall"></strong><br><br>
+                <input type="text" name="stallName" id="stallName" placeholder="Enter Stall Name"><br><br>
+            </p>
+            <p>
+                Stall Description: <br><strong id="stallDescp"></strong><br><br>
+                <input type="text" name="sDesc" id="sDesc" placeholder="Enter Stall Description">
+            </p>
+            <br><br>
+            <p>
+                Stall Category: <br><strong id="stallCat"></strong><br><br>
+                <p id="StallCat">Please select your <b>Stall Category</b>:</p>
+                <input type="radio" id="cat1" name="category" value="Vegetables">
+                <label for="cat1">Vegetables</label>
+                <input type="radio" id="cat2" name="category" value="Meats and Seafood">
+                <label for="cat2">Meats and Seafood</label>
+                <input type="radio" id="cat3" name="category" value="Asian Foods">
+                <label for="cat3">Asian Foods</label>
+                <input type="radio" id="cat4" name="category" value="Clothes and Accessories">
+                <label for="cat3">Clothes and Accessories</label><br><br>
+            </p>
+            <p>
+                Stall Image: <br><strong id="ImageS"></strong>
+                <img id="Imagefield" src="https://www.creativeglobal.co.in/mcp/uploads/product/original/no_image.jpg" width="250" height="250"><br><br>
+                <img id="s_IMG"> <br><label id="uploadLoad"></label> <br>
+                <button type="button" id="ChooseIMG">Choose</button><br>
+                <!-- <button type="button" id="UploadIMG">Upload</button><br> -->
+                <br>
+                <button onclick="updateStall()" id="updateStallbtn">Update Stall Info</button>
+            </p>
+
+            <p>
+                <br>
+                <h3>Contact Details</h3><br>
+                Email: <br><strong id="email"></strong><br>
+            </p>
+            <p>
+                Phone Number: <br><strong id="HP"></strong><br><br>
+                <input type="text" name="sHP" id="sHP" placeholder="Enter Phone Number">
+                <button onclick="updateSellerPhone()" id="updateHPbtn">Update Phone Number</button>
+            </p>
+
+
+            <br>
+            <h3>Address</h3><br>
+            <p>
+                Stall Address: <br><strong id="stallAdd"></strong><br><br>
+                <input type="text" name="SNumber" id="SNumber" placeholder="Enter Stall Number"><br>
+                <input type="text" name="Street" id="Street" placeholder="Enter Street"><br>
+                <input type="text" name="Zipcode" id="Zipcode" placeholder="Enter Zipcode"><br>
+                <input type="text" name="City" id="City" placeholder="Enter City"><br>
+                <input type="text" name="State" id="State" placeholder="Enter State"><br><br>
+                <button onclick="updateS_Add()" id="updateS_Addbtn">Update Stall Address</button><br><br>
+            </p>
+
+            <p>
+                <div id="sellerBank">
+               <br> <h3>Bank Account</h3><br>
+                Name:    <input id="namebox" type="text"></input> <br><br>
+                Visa/Mastercard: <input id="rollbox" type="text"></input> <br><br>
+                Section: <br><strong id="section"></strong><br> <br><br>
+                Gender:  <input id="genbox" type="text"></input> <br><br>
+                <br><br>
+                <button id="insert">INSERT</button>
+                <button id="select">SELECT</button>
+                <button id="update">UPDATE</button>
+                <button id="delete">DELETE</button>
+                
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                </div>
+            </p>
+
+
+        </div>
+
+        <br><br><br><br>
+
+        <hr class="solid">
+        <br><br><br><br>
+        <div id="SetUp">
+
+            <hr class="dashed">
+            <h1 id="showProducts">Products</h1>
+            <hr class="dashed">
+
+            <div class="products">
+                <div class="nav-menu" id="sticky">
+                    <ul class="nav-menu-ul">
+                        <a href="#stallpage">
+                            <li>All Products</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+
+
+            <section class="container content-section" id="stallpage">
+                <!-- <h2 class="section-header">PRODUCTS</h2> -->
+                <hr class="section-line">
+                <div class="product-item" id="products-page">
+                    <!-- show product fields -->
+                </div>
+            </section>
+        </div>
+
+
+
+
+        <br><br><br><br>
+        <hr class="solid">
+        <br><br><br><br>
+
+        <div id="ViewRC">
+            <hr class="dashed">
+            <h1>Rating and Comments</h1>
+            <hr class="dashed">
+            <br>
+            <p class="Selleroverall" id="SSRT"></p>
+            <p class="Selleroverall" id="sOvrRating"></p>
+            <br>
+            <div class="ShowAll">
+                <!--Show All Rating and Commens=ts-->
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>

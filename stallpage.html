@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    <title>Virtual Pasar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script> 
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+     <!-- Add Firebase products that you want to use -->
+     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <link rel="stylesheet" href="stall.css">
+    <link rel="stylesheet" href="NMstyles.css">
+    <script src="stall.js" async></script>
+    </head>
+    <body>
+        <!--header nav bar-->
+        <div class="hello">
+            <a href="mainpage.html"><img id="headerlogo" src="images_audrey/logo.png" alt="logo"></a>
+            <img id="more" src="image/more.png" alt="moredropdown">
+            <img id="usericon" src="image/usericon.png" alt="usericon">
+            <div id="username"><p id="currentusername">Username</p></div>
+            <a href="#"><img id="cart" src="image/cart.png" alt="cart" onclick="on()"></a>
+            <div class="dropdown">
+                <button class="dropbtn"><i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">Profile</a>
+                    <a href="order.html">My Order</a>
+                    <a href="#" onclick="logOut()">Logout</a>
+                </div>
+            </div> 
+        </div>
+        <!--end of header nav bar-->
+        <div class="products">
+            <h1 class="stall-name" id="stall_name"></h1>
+            <p class="sinfo" id="saddress"></p>
+            <p class="sinfo" id="scontact"> </p>
+            <p class="description" id="stall_description"></p>
+                <div class="nav-menu" id="sticky">
+                    <ul class="nav-menu-ul">
+                        <a href="#stallpage" ><li>All Products</li></a>
+                        <a href="#ratingcomment" ><li>Rating/Comments</li></a>
+                    </ul>
+                </div>
+        </div>
+
+        <section class="container content-section" id="stallpage">
+            <h2 class="section-header">PRODUCTS</h2>
+            <hr class="section-line">
+            <div class="product-item" id="products-page">
+               <!-- show product fields -->
+            </div>
+        </section>
+        
+
+        <!--rating and comment-->
+        <section class="rating-comment" id="ratingcomment">
+            <hr class="section-line">
+            <h2 class="section-header">Rating/Comments</h2>
+            
+            <div class="commentfield"> 
+                <table id="ratingfield"><tr><th>
+                    <div class="overallrating">
+                    <p class="overall">Overall Rating</p>
+                    <p class="overall" id="StarRating"></p>
+                    <p class="overall" id="overall_rating"></p>
+                    </div></th>
+
+                    <!-----give rating and comment-->
+                    <th>
+                    <div class="starrating">   
+                        <input type="radio" name="rate" id="rate-1" value="5.00">
+                        <label for="rate-1" class="fa fa-star"></label>
+                        <input type="radio" name="rate" id="rate-2" value="4.00">
+                        <label for="rate-2" class="fa fa-star"></label>
+                        <input type="radio" name="rate" id="rate-3" value="3.00">
+                        <label for="rate-3" class="fa fa-star"></label>
+                        <input type="radio" name="rate" id="rate-4" value="2.00">
+                        <label for="rate-4" class="fa fa-star"></label>
+                        <input type="radio" name="rate" id="rate-5" value="1.00">
+                        <label for="rate-5" class="fa fa-star"></label>
+                        
+                    <form>
+                        <textarea id="commenttext" placeholder="Describe your review..."></textarea> 
+                        <br>
+                        <div class="post-btn"><button onclick="GiveRC()">Post</button>
+                    </form>
+                    </div>
+                </th></tr></table>
+                <br>
+                <!----single review-->
+                <table id="reviewtable">
+                <tr>
+                    <th id="Rating">Rating</th>
+                    <th id="Review">Review</th>
+                </tr>
+            </table>
+                <div class="ShowRC">
+                    <!--Show All Rating and Commens=ts-->
+                </div>
+                <!-- end of review -->
+            </div>
+        </section>
+        <!--Shopping Cart-->
+        <div id="overlay">
+            <div id="text"></div>
+            <section class="cartcontainer content-section">
+                <span onclick="closeCart()"><i class="fa fa-close closecart"></i></span>
+                <h2 class="cart-title">YOUR SHOPPING CART</h2>
+                <div class="cart-row">
+                    <span class="cart-item cart-header cart-column">PRODUCT</span>
+                    <span class="cart-price cart-header cart-column">PRICE</span>
+                    <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+                </div>
+                <div class="cart-items">
+                    <!--add carts here-->
+                </div>
+                <div class="cart-total">
+                    <strong class="cart-total-title">Total</strong>
+                    <span class="cart-total-price">RM 0</span>
+                </div>
+                <div class="payment">
+                    <strong id="paymentTitle">Payment Type:</strong>
+                    <input type="radio" name="payment" value="cash" id="cash">Cash
+                    <input type="radio" name="payment" value="bank" id="online">Bank
+                </div>
+                <br>
+                <div class="payment">
+                    <strong id="paymentTitle">Type of delivery:</strong>
+                    <input type="radio" name="delivery" value="delivery" id="delivery">Delivery
+                    <input type="radio" name="delivery" value="self_pickup" id="self_pickup">Self-pickup
+                </div>
+                <br>
+                <button class="btn btn-checked btn-checkout" type="button">CHECKOUT</button>
+            </section>
+          </div>
+
+          <!-- -------- footer-------- -->
+          <br>
+        <div class="footer-main-div">
+            <div class="footer-socmed">
+                <ul>
+                    <li><a href="#" target="blank"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#" target="blank"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#" target="blank"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#" target="blank"><i class="fa fa-youtube"></i></a></li>
+
+                </ul>
+            </div>
+            <div class="footer-menu1">
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">F.A.Q</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+
+            </div>
+        </div>
+        <!-- End of footer -->
+    </body>
+</html>

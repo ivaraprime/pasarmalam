@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Customer Profile</title>
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet'>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-storage.js"></script>
+    <script src="custProfile.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="custProfile.css">
+    <link rel="stylesheet" href="NMstyles.css">
+</head>
+
+
+<body>
+    <div class="hello">
+        <a href="mainpage.html"><img id="headerlogo" src="images_audrey/logo.png" alt="logo"></a>
+        <img id="usericon" src="image/usericon.png" alt="usericon">
+        <div id="username">
+            <p id="currentusername">Username</p>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn"><i class="fa fa-caret-down"></i>
+                </button>
+            <div class="dropdown-content">
+                <a href="order.html">My Order</a>
+                <a href="#" onclick="logOut()">Logout</a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- End Header -->
+
+    <div id="Container">
+        <hr class="dashed">
+        <h1>User Profile</h1>
+        <hr class="dashed">
+
+        <div id="Profile">
+            <h2>Hello, <strong id="custName"></strong> !</h2>
+            <p>
+                <h3>Contact Details</h3>
+                Email: <br><strong id="email"></strong><br>
+            </p>
+            <p>
+                Phone Number: <br><strong id="HP"></strong><br><br>
+                <input type="text" name="cHP" id="cHP" placeholder="Enter Phone Number">
+                <button onclick="updateCustPhone()" id="updateHPbtn">Update Phone Number</button>
+            </p>
+
+
+
+            <h3>Address</h3>
+            <p>
+                Home Address: <br><strong id="custAdd"></strong><br><br>
+                <input type="text" name="CNumber" id="CNumber" placeholder="Enter Stall Number"><br>
+                <input type="text" name="Street" id="Street" placeholder="Enter Street"><br>
+                <input type="text" name="Zipcode" id="Zipcode" placeholder="Enter Zipcode"><br>
+                <input type="text" name="City" id="City" placeholder="Enter City"><br>
+                <input type="text" name="State" id="State" placeholder="Enter State"><br>
+                <button onclick="updateC_Add()" id="updateS_Addbtn">Update Home Address</button>
+            </p>
+
+
+        </div>
+
+
+        <!-- -------- footer-------- -->
+        <div class="footer-main-div">
+            <div class="footer-socmed">
+                <ul>
+                    <li><a href="#" target="blank"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#" target="blank"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#" target="blank"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#" target="blank"><i class="fa fa-youtube"></i></a></li>
+
+                </ul>
+            </div>
+            <div class="footer-menu1">
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">F.A.Q</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+
+            </div>
+        </div>
+        <!-- End of footer -->
+
+
+    </div>
+
+</body>
+
+</html>
