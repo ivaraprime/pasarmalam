@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <title>Virtual-Pasar Login/Signup</title>
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
+    <link rel="stylesheet" href="Astyle.css">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+    <script src="reg_login.js" defer></script>
+</head>
+
+
+<body>
+
+    <div class="form-container">
+        <img id="logosign" src="images_audrey/logo.png" alt="logo">
+        <p class="form-btn">
+            <span onclick="login()">Login</span>
+            <span onclick="signup()">Register</span>
+            <hr id="Indicator">
+        </p>
+
+        <div id="LoginForm">
+            <div id="loginText">
+                <input type="text" placeholder="Email" id="Email"> <br>
+                <input type="password" placeholder="Password" id="Password"> <br>
+
+                <button onclick="signin()" class="btn">Login</button>
+                <br>
+            </div>
+        </div>
+
+
+        <div id="SignupForm">
+            <div id="signupText">
+                <p id="signup">Please select your <b>Type of Account</b>:</p>
+                <input type="radio" id="CustAcc" name="accType" value="cust" style="width:auto;height: fit-content;">
+                <label for="CustAcc" id="signup">Customer</label><br>
+                <input type="radio" id="SellerAcc" name="accType" value="seller" style="width: auto;height: fit-content;">
+                <label for="SellerAcc" id="signup">Seller</label><br>
+                <input type="text" placeholder="Username" id="User"> <br>
+                <input type="email" placeholder="Email" id="email"> <br>
+                <input type="password" placeholder="Password" id="password"><br>
+
+                <button onclick="register()" class="btn">Register</button>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+</body>
+
+</html>
