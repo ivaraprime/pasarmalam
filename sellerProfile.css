@@ -552,6 +552,41 @@ h3 {
 /* Products CSS */
 
 
+/* Media Queries */
+
+@media screen and (min-width: 800px) {
+    .product-item {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .starrating label {
+        font-size: 40px;
+    }
+}
+
+@media screen and (min-width: 1110px) {
+    .product-item {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .shop-items {
+        margin-right: 1rem;
+        margin-left: 1rem;
+    }
+    .description {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1336px) {
+    .product-item {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .flex {
+        height: 60%;
+    }
+}
+
+
 /*stall page*/
 
 .products {
@@ -722,6 +757,7 @@ hr.section-line {
 .shop-item-details {
     background: whitesmoke;
     padding: 2rem;
+    font-size: 1.5rem;
 }
 
 .shop-item-price {
@@ -735,9 +771,6 @@ hr.section-line {
 }
 
 .shop-items {
-    /* display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around; */
     margin: 1rem;
     position: relative;
 }
