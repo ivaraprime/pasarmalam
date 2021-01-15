@@ -245,3 +245,9 @@ p {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+div a
+{
+    font-size: 25px;
+    font-family: 'Caveat';   
+}
